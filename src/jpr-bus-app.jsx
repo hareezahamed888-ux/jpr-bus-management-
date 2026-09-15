@@ -414,21 +414,33 @@ function LoginScreen({ onLogin }) {
             value={idValue}
             onChange={(e) => setIdValue(e.target.value)}
             placeholder={fieldLabels.idPh}
-            style={{ display: "block", width: "100%", marginTop: 6, padding: "10px 12px", border: "1px solid #D8DCD9", borderRadius: 4, fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14 }}
+            autoComplete="username"
+            style={{
+              display: "block", width: "100%", marginTop: 6, padding: "10px 12px",
+              border: "1px solid #D8DCD9", borderRadius: 4,
+              fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#1B1F23",
+              background: "#FAFBFA",
+            }}
           />
         </label>
-        <label style={{ display: "block", marginBottom: 16 }}>
+        <label style={{ display: "block", marginBottom: 20 }}>
           <span style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 13, fontWeight: 600, color: "#1B1F23" }}>{fieldLabels.secret}</span>
           <input
             type="password"
             value={secret}
             onChange={(e) => setSecret(e.target.value)}
             placeholder={fieldLabels.secretPh}
-            style={{ display: "block", width: "100%", marginTop: 6, padding: "10px 12px", border: "1px solid #D8DCD9", borderRadius: 4, fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14 }}
+            autoComplete="current-password"
+            style={{
+              display: "block", width: "100%", marginTop: 6, padding: "10px 12px",
+              border: "1px solid #D8DCD9", borderRadius: 4,
+              fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#1B1F23",
+              background: "#FAFBFA",
+            }}
           />
         </label>
         {error && (
-          <div style={{ marginBottom: 16, padding: "10px 12px", background: "#F6E4E2", color: "#B3392F", borderRadius: 4, fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 13 }}>
+          <div style={{ marginBottom: 16, padding: "10px 12px", borderRadius: 4, background: "#F6E4E2", color: "#B3392F", fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 13 }}>
             {error}
           </div>
         )}
@@ -436,18 +448,23 @@ function LoginScreen({ onLogin }) {
           type="submit"
           style={{
             width: "100%", padding: "12px 0", border: "none", borderRadius: 4, cursor: "pointer",
-            background: "#14213D", color: "#fff", fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 15,
+            background: "#14213D", color: "#fff",
+            fontFamily: "'Space Grotesk', sans-serif", fontWeight: 700, fontSize: 15,
           }}
         >
           Sign in
         </button>
       </form>
+
+      <div style={{ marginTop: 16, textAlign: "center", fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 12, color: "#8B8F94" }}>
+        Demo credentials are listed in the README.
+      </div>
     </div>
   );
 }
 
 // ---------------------------------------------------------------------------
-// Root app
+// Root
 // ---------------------------------------------------------------------------
 export default function JPRBusApp() {
   const [session, setSession] = useState(null);
@@ -455,14 +472,17 @@ export default function JPRBusApp() {
   return (
     <div style={{ minHeight: "100vh", background: "#F2F4F3", padding: "32px 16px" }}>
       <div style={{ maxWidth: 560, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 28 }}>
-          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 28, fontWeight: 700, color: "#14213D", letterSpacing: "-0.02em" }}>
-            JPR Transport
+        <header style={{ textAlign: "center", marginBottom: 28 }}>
+          <div style={{ fontFamily: "'Space Grotesk', sans-serif", fontSize: 13, letterSpacing: "0.12em", color: "#1F7A6C", fontWeight: 600 }}>
+            JPR COLLEGE
           </div>
-          <div style={{ fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#6B7078", marginTop: 4 }}>
-            Bus pass & route portal
-          </div>
-        </div>
+          <h1 style={{ margin: "6px 0 0", fontFamily: "'Space Grotesk', sans-serif", fontSize: 28, fontWeight: 700, color: "#14213D", letterSpacing: "-0.02em" }}>
+            Transport Portal
+          </h1>
+          <p style={{ margin: "6px 0 0", fontFamily: "'IBM Plex Sans', sans-serif", fontSize: 14, color: "#6B7078" }}>
+            Bus pass status · Routes · Parent access
+          </p>
+        </header>
 
         {!session && <LoginScreen onLogin={setSession} />}
 
