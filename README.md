@@ -20,3 +20,7 @@ npm run dev
 | Student | 24JECS212   | 24JPR@212       |
 | Parent  | 24JECS212   | 4041            |
 | Alumni  | 22JEME090   | 22JPR@090       |
+
+---
+
+Deployed with Vite + React.
